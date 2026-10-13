@@ -22,3 +22,7 @@ data/user/settings/*
 # Node
 node_modules/
 .next/
+
+# PyInstaller
+build/
+dist/

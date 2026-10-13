@@ -17,6 +17,8 @@ datas = [
     (str(ROOT / 'deeptutor_web/server.js'), './deeptutor_web/'),
     (str(ROOT / 'deeptutor_web/package.json'), './deeptutor_web/package.json'),
     (str(ROOT / 'deeptutor_web/BUILD_INFO'), './deeptutor_web/BUILD_INFO'),
+    # Default LLM pool + system settings, seeded into a fresh runtime home.
+    (str(ROOT / 'packaging/default-settings'), './packaging/default-settings'),
     # Prompt/template data (yaml/md/json) inside the deeptutor package.
     *collect_data_files('deeptutor'),
 ]

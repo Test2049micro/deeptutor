@@ -67,15 +67,14 @@ class MetaAnalysisCapability(TurnCapability):
             stream=stream,
         )
 
-        if result.get("outline_preview"):
-            research_config: dict[str, Any] = {
-                "mode": "meta_analysis",
-                "depth": request_config.depth,
-                "max_studies": request_config.max_studies,
-                "min_quality": request_config.min_quality,
-                "effect_type": request_config.effect_type,
-            }
-            await stream.result(
-                {**result, "research_config": research_config},
-                source=self.name,
-            )
+        research_config: dict[str, Any] = {
+            "mode": "meta_analysis",
+            "depth": request_config.depth,
+            "max_studies": request_config.max_studies,
+            "min_quality": request_config.min_quality,
+            "effect_type": request_config.effect_type,
+        }
+        await stream.result(
+            {**result, "research_config": research_config},
+            source=self.name,
+        )

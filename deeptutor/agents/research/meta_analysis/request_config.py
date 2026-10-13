@@ -31,6 +31,8 @@ class MetaAnalysisRequestConfig(BaseModel):
 
 
 def validate_meta_analysis_request_config(raw_config: dict[str, Any] | None) -> MetaAnalysisRequestConfig:
+    if raw_config is None:
+        raw_config = {}
     if not isinstance(raw_config, dict):
         raise ValueError("Meta-analysis requires an explicit config object.")
     try:

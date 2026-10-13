@@ -14,7 +14,7 @@ from dataclasses import dataclass, field
 import re
 from typing import Literal
 
-ResearchMode = Literal["notes", "report", "comparison", "learning_path"]
+ResearchMode = Literal["notes", "report", "comparison", "learning_path", "meta_analysis"]
 ResearchDepth = Literal["quick", "standard", "deep", "manual"]
 
 _MANUAL_SUBTOPICS: dict[str, int] = {"quick": 2, "standard": 3, "deep": 4}
@@ -132,6 +132,14 @@ STRATEGIES: dict[ResearchMode, ModeStrategy] = {
         decompose_mode="auto",
         single_pass_threshold=99,
         min_section_length=420,
+    ),
+    "meta_analysis": ModeStrategy(
+        name="meta_analysis",
+        style="meta_analysis",
+        rephrase_enabled=True,
+        decompose_mode="auto",
+        single_pass_threshold=2,
+        min_section_length=650,
     ),
 }
 

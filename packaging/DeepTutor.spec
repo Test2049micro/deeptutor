@@ -5,9 +5,13 @@ from pathlib import Path
 ROOT = Path(globals().get('SPECPATH') or Path.cwd()).resolve().parent
 
 datas = [
-    (str(ROOT / 'deeptutor_web/dist'), './deeptutor_web/dist'),
+    (str(ROOT / 'deeptutor_web/.next/static'), './deeptutor_web/.next/static'),
+    (str(ROOT / 'deeptutor_web/.next/server'), './deeptutor_web/.next/server'),
+    (str(ROOT / 'deeptutor_web/public'), './deeptutor_web/public'),
     (str(ROOT / 'deeptutor_web/node_modules'), './deeptutor_web/node_modules'),
     (str(ROOT / 'deeptutor_web/server.js'), './'),
+    (str(ROOT / 'deeptutor_web/package.json'), './deeptutor_web/package.json'),
+    (str(ROOT / 'deeptutor_web/BUILD_INFO'), './deeptutor_web/BUILD_INFO'),
 ]
 hiddenimports = [
     'deeptutor',

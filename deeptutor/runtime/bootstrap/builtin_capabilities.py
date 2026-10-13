@@ -117,6 +117,16 @@ BUILTIN_CAPABILITY_SPECS: dict[str, BuiltinCapabilitySpec] = {
             cli_aliases=["research"],
         ),
     ),
+    "meta_analysis": BuiltinCapabilitySpec(
+        BUILTIN_CAPABILITY_CLASSES["meta_analysis"],
+        _manifest(
+            "meta_analysis",
+            "Systematic-review-style meta analysis with protocol review, screening, and evidence synthesis.",
+            stages=["protocol", "screening", "researching", "synthesis"],
+            tools_used=["rag", "web_search", "paper_search", "exec"],
+            cli_aliases=["meta_analysis"],
+        ),
+    ),
     "math_animator": BuiltinCapabilitySpec(
         BUILTIN_CAPABILITY_CLASSES["math_animator"],
         _manifest(

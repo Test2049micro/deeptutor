@@ -26,3 +26,6 @@ node_modules/
 # PyInstaller
 build/
 dist/
+
+# Local git bundle backups
+.git-backup/

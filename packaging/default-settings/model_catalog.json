@@ -3,8 +3,8 @@
   "connections": [],
   "services": {
     "llm": {
-      "active_profile_id": "cpa-gemini-pool",
-      "active_model_id": "gemini-3.8-flash-high",
+      "active_profile_id": "cpa-deepseek",
+      "active_model_id": "deepseek-v4-flash",
       "profiles": [
         {
           "id": "cpa-gemini-pool",
@@ -26,9 +26,9 @@
               "model": "gemini-3.7-flash-high"
             },
             {
-              "id": "gemini-3.1-pro-low",
-              "name": "Gemini 3.1 Pro Preview",
-              "model": "gemini-3.1-pro-low"
+              "id": "gpt-6.1-sol",
+              "name": "gpt-6.1-sol",
+              "model": "gpt-6.1-sol"
             }
           ],
           "api_format": "auto",
@@ -57,14 +57,29 @@
               "id": "gpt-5.5",
               "name": "GPT-5.5 (Codex 订阅备胎)",
               "model": "gpt-5.5"
+            },
+            {
+              "id": "gpt-5.6-luna",
+              "name": "gpt-5.6-luna",
+              "model": "gpt-5.6-luna"
+            },
+            {
+              "id": "gpt-5.6-sol",
+              "name": "gpt-5.6-sol",
+              "model": "gpt-5.6-sol"
+            },
+            {
+              "id": "gpt-6-astra",
+              "name": "gpt-6-astra",
+              "model": "gpt-6-astra"
             }
           ],
           "api_format": "auto",
           "wire_api": "auto"
         },
         {
-          "id": "cpa-claude",
-          "name": "8317 CPA · Claude 订阅腿",
+          "id": "cpa-deepseek",
+          "name": "8317 CPA · DeepSeek Pool",
           "binding": "custom",
           "base_url": "http://127.0.0.1:8317/v1",
           "api_key": "sk-workbuddy-local",
@@ -72,24 +87,27 @@
           "extra_headers": {},
           "models": [
             {
-              "id": "claude-opus-4-6-thinking",
-              "name": "Claude Opus 4.6 Thinking (冷却中~134h) — 8317 无此腿(上游404)",
-              "model": "claude-opus-4-6-thinking"
+              "id": "deepseek-v4-flash",
+              "name": "deepseek-v4-flash",
+              "model": "deepseek-v4-flash"
             },
             {
-              "id": "claude-sonnet-4-6",
-              "name": "Claude Sonnet 4.6 (冷却中) — 8317 无此腿(上游404)",
-              "model": "claude-sonnet-4-6"
+              "id": "deepseek-v4-pro",
+              "name": "deepseek-v4-pro",
+              "model": "deepseek-v4-pro"
+            },
+            {
+              "id": "deepseek-v4.1-flash",
+              "name": "deepseek-v4.1-flash",
+              "model": "deepseek-v4.1-flash"
             }
-          ],
-          "api_format": "auto",
-          "wire_api": "auto"
+          ]
         }
       ]
     },
     "task": {
-      "active_profile_id": "cpa-gemini-task",
-      "active_model_id": "gemini-3.8-flash-high",
+      "active_profile_id": "cpa-deepseek",
+      "active_model_id": "deepseek-v4-flash",
       "profiles": [
         {
           "id": "cpa-gemini-task",
@@ -132,29 +150,16 @@
               "id": "gpt-5.5",
               "name": "GPT-5.5 (Codex 订阅备胎)",
               "model": "gpt-5.5"
-            }
-          ],
-          "api_format": "auto",
-          "wire_api": "auto"
-        },
-        {
-          "id": "cpa-claude-task",
-          "name": "8317 CPA · Claude 订阅腿 (task)",
-          "binding": "custom",
-          "base_url": "http://127.0.0.1:8317/v1",
-          "api_key": "sk-workbuddy-local",
-          "api_version": "",
-          "extra_headers": {},
-          "models": [
-            {
-              "id": "claude-opus-4-6-thinking",
-              "name": "Claude Opus 4.6 Thinking (冷却中~134h) — 8317 无此腿(上游404)",
-              "model": "claude-opus-4-6-thinking"
             },
             {
-              "id": "claude-sonnet-4-6",
-              "name": "Claude Sonnet 4.6 (冷却中) — 8317 无此腿(上游404)",
-              "model": "claude-sonnet-4-6"
+              "id": "gpt-5.6-luna",
+              "name": "gpt-5.6-luna",
+              "model": "gpt-5.6-luna"
+            },
+            {
+              "id": "gpt-6-astra",
+              "name": "gpt-6-astra",
+              "model": "gpt-6-astra"
             }
           ],
           "api_format": "auto",
@@ -163,95 +168,23 @@
       ]
     },
     "embedding": {
-      "active_profile_id": "local-ollama-embed",
-      "active_model_id": "ollama-nomic-embed-text",
-      "profiles": [
-        {
-          "id": "local-ollama-embed",
-          "name": "Local Ollama · nomic-embed-text (768d)",
-          "binding": "ollama",
-          "base_url": "http://127.0.0.1:11434/api/embed",
-          "api_key": "ollama",
-          "api_version": "",
-          "extra_headers": {},
-          "models": [
-            {
-              "id": "ollama-nomic-embed-text",
-              "name": "nomic-embed-text",
-              "model": "nomic-embed-text",
-              "dimension": "768",
-              "supported_dimensions": ""
-            }
-          ]
-        }
-      ]
+      "active_profile_id": null,
+      "active_model_id": null,
+      "profiles": []
     },
     "search": {
       "active_profile_id": "search-ddg",
-      "profiles": [
-        {
-          "id": "search-ddg",
-          "name": "DuckDuckGo · 无需密钥",
-          "provider": "duckduckgo",
-          "base_url": "",
-          "api_key": "",
-          "proxy": "",
-          "models": [],
-          "api_version": ""
-        }
-      ]
+      "profiles": []
     },
     "tts": {
-      "active_profile_id": "mimo-local-tts",
-      "active_model_id": "mimo-tts-1",
-      "profiles": [
-        {
-          "id": "mimo-local-tts",
-          "name": "MiMo 本地语音代理 (8799)",
-          "binding": "custom",
-          "base_url": "http://127.0.0.1:8799/v1",
-          "api_key": "",
-          "api_version": "",
-          "extra_headers": {},
-          "api_format": "auto",
-          "wire_api": "auto",
-          "models": [
-            {
-              "id": "mimo-tts-1",
-              "name": "MiMo TTS",
-              "model": "mimo-v2.5-tts",
-              "voice": "",
-              "response_format": ""
-            }
-          ]
-        }
-      ]
+      "active_profile_id": null,
+      "active_model_id": null,
+      "profiles": []
     },
     "stt": {
-      "active_profile_id": "local-voice-stt",
-      "active_model_id": "gemini-3.5-transcribe",
-      "profiles": [
-        {
-          "id": "local-voice-stt",
-          "name": "本地语音代理 (8801 Gemini 转写 / 8799 MiMo)",
-          "binding": "custom",
-          "base_url": "http://127.0.0.1:8801/v1",
-          "api_key": "",
-          "api_version": "",
-          "extra_headers": {},
-          "api_format": "auto",
-          "wire_api": "auto",
-          "models": [
-            {
-              "id": "gemini-3.5-transcribe",
-              "name": "Gemini 3.5 Transcribe",
-              "model": "gemini-3.5-transcribe",
-              "voice": "",
-              "response_format": ""
-            }
-          ]
-        }
-      ]
+      "active_profile_id": null,
+      "active_model_id": null,
+      "profiles": []
     },
     "imagegen": {
       "active_profile_id": "cpa-image",

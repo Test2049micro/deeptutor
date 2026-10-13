@@ -22,7 +22,7 @@ hiddenimports = [
 ]
 
 a = Analysis(
-    [str(ROOT / 'deeptutor_cli/main.py')],
+    [str(ROOT / '_run.py')],
     pathex=[str(ROOT)],
     binaries=[],
     datas=datas,

@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+.env
+.eggs/
+*.egg-info/
+
+# Data / runtime
+data/*
+!data/.gitkeep
+data/user/settings/*
+!data/user/settings/.gitkeep
+
+# IDE / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Node
+node_modules/
+.next/

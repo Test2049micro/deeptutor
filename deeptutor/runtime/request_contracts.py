@@ -10,6 +10,10 @@ from deeptutor.agents.math_animator.request_config import (
     MathAnimatorRequestConfig,
     validate_math_animator_request_config,
 )
+from deeptutor.agents.research.meta_analysis.request_config import (
+    MetaAnalysisRequestConfig,
+    validate_meta_analysis_request_config,
+)
 from deeptutor.agents.research.request_config import (
     DeepResearchRequestConfig,
     validate_research_request_config,
@@ -149,6 +153,7 @@ CAPABILITY_CONFIG_VALIDATORS: dict[str, Callable[[dict[str, Any] | None], Any]] 
     "deep_research": validate_research_request_config,
     "math_animator": validate_math_animator_request_config,
     "visualize": validate_visualize_request_config,
+    "meta_analysis": validate_meta_analysis_request_config,
 }
 
 CAPABILITY_CONFIG_MODELS: dict[str, type[BaseModel]] = {
@@ -164,6 +169,7 @@ CAPABILITY_CONFIG_MODELS: dict[str, type[BaseModel]] = {
     "immersive_reading": ImmersiveReadingRequestConfig,
     "course_study": CourseStudyRequestConfig,
     "immersive_watching": ImmersiveWatchingRequestConfig,
+    "meta_analysis": MetaAnalysisRequestConfig,
 }
 
 

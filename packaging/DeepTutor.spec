@@ -4,7 +4,11 @@ from pathlib import Path
 
 from PyInstaller.utils.hooks import collect_data_files, collect_submodules
 
-ROOT = Path(globals().get('SPECPATH') or Path.cwd()).resolve().parent
+#: Repo root, relative to this spec so the build works from any clone.
+#: Override with DEEPTUTOR_SPEC_ROOT to build an out-of-tree checkout.
+#: PyInstaller injects SPECPATH (the spec file's directory) into the namespace.
+SPEC_PATH = Path(globals().get('SPECPATH') or Path.cwd())
+ROOT = Path(os.environ.get('DEEPTUTOR_SPEC_ROOT', SPEC_PATH.resolve().parent))
 
 datas = [
     (str(ROOT / 'deeptutor_web/.next'), './deeptutor_web/.next'),

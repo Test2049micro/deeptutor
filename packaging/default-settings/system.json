@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "version_check_enabled": true,
+  "backend_port": 8001,
+  "backend_workers": 1,
+  "frontend_port": 3782,
+  "next_public_api_base_external": "",
+  "next_public_api_base": "",
+  "cors_origin": "",
+  "cors_origins": [],
+  "disable_ssl_verify": false,
+  "chat_attachment_dir": "",
+  "sandbox_allow_subprocess": true,
+  "capability_routing_enabled": false,
+  "web_search_source_filtering": {
+    "enabled": true,
+    "blocked_domains": [],
+    "trusted_domains": [],
+    "content_filtering": true,
+    "use_educational_trusted_domains": false,
+    "use_moderation": false
+  },
+  "chat_attachment_max_file_mb": 20,
+  "chat_attachment_max_total_mb": 25,
+  "chat_prior_image_reinject_max": 4,
+  "chat_attachment_max_chars_per_doc": 200000,
+  "chat_attachment_max_chars_total": 150000
+}

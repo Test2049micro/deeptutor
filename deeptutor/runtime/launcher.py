@@ -604,6 +604,10 @@ def _packaged_web_dir() -> Path | None:
     except ImportError:
         return None
     path = Path(deeptutor_web.__file__).resolve().parent
+    if not (path / "server.js").exists() and getattr(sys, "frozen", False):
+        # PyInstaller ships the standalone assets as data files in the bundle
+        # directory; the frozen module object alone points inside the archive.
+        path = Path(getattr(sys, "_MEIPASS", path)) / "deeptutor_web"
     return path if (path / "server.js").exists() else None
 
 

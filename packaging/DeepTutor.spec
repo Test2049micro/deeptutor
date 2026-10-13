@@ -2,16 +2,19 @@
 import os
 from pathlib import Path
 
+from PyInstaller.utils.hooks import collect_data_files, collect_submodules
+
 ROOT = Path(globals().get('SPECPATH') or Path.cwd()).resolve().parent
 
 datas = [
-    (str(ROOT / 'deeptutor_web/.next/static'), './deeptutor_web/.next/static'),
-    (str(ROOT / 'deeptutor_web/.next/server'), './deeptutor_web/.next/server'),
+    (str(ROOT / 'deeptutor_web/.next'), './deeptutor_web/.next'),
     (str(ROOT / 'deeptutor_web/public'), './deeptutor_web/public'),
     (str(ROOT / 'deeptutor_web/node_modules'), './deeptutor_web/node_modules'),
-    (str(ROOT / 'deeptutor_web/server.js'), './'),
+    (str(ROOT / 'deeptutor_web/server.js'), './deeptutor_web/'),
     (str(ROOT / 'deeptutor_web/package.json'), './deeptutor_web/package.json'),
     (str(ROOT / 'deeptutor_web/BUILD_INFO'), './deeptutor_web/BUILD_INFO'),
+    # Prompt/template data (yaml/md/json) inside the deeptutor package.
+    *collect_data_files('deeptutor'),
 ]
 hiddenimports = [
     'deeptutor',
@@ -19,7 +22,22 @@ hiddenimports = [
     'deeptutor.agents.research.meta_analysis',
     'deeptutor.agents.research.meta_analysis.capability',
     'deeptutor.agents.research.meta_analysis.request_config',
-]
+    'deeptutor.api.main',
+    'deeptutor.runtime.worker_process',
+    'deeptutor.runtime.update_worker',
+    'uvicorn',
+    'uvicorn.logging',
+    'uvicorn.loops',
+    'uvicorn.loops.auto',
+    'uvicorn.protocols',
+    'uvicorn.protocols.http',
+    'uvicorn.protocols.http.auto',
+    'uvicorn.protocols.websockets',
+    'uvicorn.protocols.websockets.auto',
+    'uvicorn.lifespan',
+    'uvicorn.lifespan.on',
+    'runpy',
+] + collect_submodules('deeptutor')
 
 a = Analysis(
     [str(ROOT / '_run.py')],

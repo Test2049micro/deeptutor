@@ -265,7 +265,7 @@ def create_token(
     device_session_nonce: str = "",
 ) -> str:
     """Create a signed JWT for the given username and role."""
-    from jose import jwt
+    import jwt
 
     if not user_id:
         record = _load_users().get(username) or {}
@@ -309,13 +309,20 @@ def decode_token(token: str) -> TokenPayload | None:
         )
 
     # Standard JWT + bcrypt mode
-    from jose import JWTError, jwt
+    import jwt
+    from jwt import PyJWTError
 
     if not AUTH_SECRET:
         return None
 
     try:
-        payload = jwt.decode(token, AUTH_SECRET, algorithms=[_ALGORITHM])
+        payload = jwt.decode(
+            token,
+            AUTH_SECRET,
+            algorithms=[_ALGORITHM],
+            # Preserve device validation below; require a bounded session lifetime.
+            options={"require": ["exp", "sub"]},
+        )
         username = payload.get("sub")
         if not username:
             return None
@@ -341,7 +348,7 @@ def decode_token(token: str) -> TokenPayload | None:
             device_credential_id=device_credential_id,
             device_session_nonce=device_session_nonce,
         )
-    except JWTError:
+    except PyJWTError:
         return None
 
 
